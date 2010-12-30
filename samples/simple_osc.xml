@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<interface>
+	<tab label="Oscillator">
+		<slider type="set" geo="9.76 16.67 6 67"
+			min="100" max="1000" label="PITCH (Hz)" showValue="true"
+			OSCAddress="/osc/pitch">400</slider>
+
+		<slider geo="29.3 16.67 6 53" color="red green"
+			max="100" step="5" label="VOL (db)" showValue="true"
+			OSCAddress="/osc/volume">80</slider>
+
+		<switch geo="29.3 73 6 10" label="MUTE"
+			OSCAddress="/osc/mute">true</switch>
+	</tab>
+</interface>

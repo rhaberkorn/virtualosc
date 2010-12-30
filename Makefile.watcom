@@ -1,0 +1,45 @@
+# Virtual OSC Controller
+# Open Watcom Makefile
+
+ccl = owcc
+
+exeext = .exe
+dllext = .dll
+objext = .obj
+libext = .lib
+
+sdl = c:\prg\libsdl
+incl += -I$(sdl)\include\SDL
+libs += $(sdl)\SDL\sdl12$libext
+# ^ adapt to your SDL configuration
+
+expat = c:\prg\expat-2.0.1
+incl += -I$(expat)\lib
+libs += $(expat)\lib\expat$libext
+
+optimization = -mtune=i386 -g3 -O0
+# ^ adapt to your system architecture etc.
+cflags = -std=c99 -mthreads -fno-short-enum -mregparm=0 $optimization
+#lflags = -s
+# ^ adapt to your needs
+
+defs = -DOSC_NOBUNDLES
+#defs += -DPACKAGE_VERSION="1.0"
+
+manifest = src\controller.c src\xml.c src\graphics.c src\controls.c &
+	   src\fontface.c src\OSC-client.c src\osc.c
+objects = $(manifest:.c=$objext)
+
+all : controller$exeext .symbolic
+
+controller$exeext : $objects
+	$ccl $lflags -o $^@ $< $libs
+
+.c : src
+.c$objext:
+	$ccl $cflags $incl $defs -c -o $^@ $[@
+
+clean: .symbolic
+	@for %i in ($objects controller$exeext) do &
+		@if exist %i del %i
+

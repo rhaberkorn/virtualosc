@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<interface>
+	<tab label="Tab 1">
+		<slider type="set" geo="9.76 16.67 3.91 66.67" max="100"
+			step="10" label="Slider 1" showValue="true"
+			OSCAddress="/slider1">100</slider>
+
+		<slider type="relative" geo="19.53 16.67 3.91 66.67"
+			color="white" max="100"
+			OSCAddress="/slider2">23</slider>
+
+		<slider geo="29.3 16.67 3.91 66.67" color="red green"
+			max="128" step="4" label="Slider 3">100</slider>
+
+		<slider geo="39.06 16.67 3.91 66.67" color="red green"
+			max="100" label="S4" showValue="true">23</slider>
+
+		<switch geo="48.83 16.67 6.84 8.33" label="SW1">true</switch>
+
+		<button geo="48.83 33.33 6.84 8.33" color="yellow"
+			OSCAddress="/button"/>
+	</tab>
+</interface>
+
